@@ -4,7 +4,6 @@ body {
 
 .top-pane {
   background-color: hsl(225, 6% , 25%);
-  height: 100% !important;
 }
 
 .pane {
@@ -46,10 +45,6 @@ body {
   padding: .5rem .5rem .5rem 1rem;
   border-top-left-radius: .5rem;
   border-top-right-radius: .5rem;
-}
-
-.CodeMirror {
-  height: 100% important;
 }
 
 .code-mirror-wrapper {

@@ -3,7 +3,7 @@ body {
 }
 
 .top-pane {
-  background-color: hsl(225, 6% , 25%);
+  background-color: hsl(225, 6%, 25%);
 }
 
 .pane {
@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: .5rem;
-  background-color: hsl(225, 6% , 25%);
+  background-color: hsl(225, 6%, 25%);
 }
 
 .editor-container.collapsed {
@@ -26,10 +26,10 @@ body {
 
 .expand-collapse-btn {
   margin-left: .5rem;
+  cursor: pointer;
+  color: white;
   background: none;
   border: none;
-  color: white;
-  cursor: pointer;
 }
 
 .editor-container.collapsed .CodeMirror-scroll {
@@ -40,7 +40,7 @@ body {
 .editor-title {
   display: flex;
   justify-content: space-between;
-  background-color: hsl(225, 6% , 15%) ;
+  background-color: hsl(225, 6%, 15%);
   color: white;
   padding: .5rem .5rem .5rem 1rem;
   border-top-left-radius: .5rem;

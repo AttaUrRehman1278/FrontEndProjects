@@ -15,10 +15,12 @@ function Header() {
                     src="https://download.logo.wine/logo/YouTube/YouTube-Logo.wine.png" alt="" />
             </div>
             <div className="header_middle">
-                <input className='text_search' type="text" />
-                <Search />
-                <Mic />
+                <div className="header_input">
+                    <input placeholder="Search" className='text_search' type="text" />
+                    <Search className='search_btn'/>
+                </div>
             </div>
+                <Mic className='mic'/>
             <div className="header_right">
                 <VideoCall />
                 <NotificationsSharp />

@@ -73,3 +73,7 @@
 .header_right .header_right_icon {
     margin-right: 15px;
 }
+
+.header_menubar {
+    cursor: pointer;
+}

@@ -9,10 +9,10 @@ function Header() {
     return (
         <div className="header">
             <div className="header_left">
-                <Menu />
+                <Menu className='header_menubar'/>
                 <img
                     className='header__logo'
-                    src="https://download.logo.wine/logo/YouTube/YouTube-Logo.wine.png" alt="" />
+                    src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-white-png.png" alt="" />
             </div>
             <div className="header_middle">
                 <div className="header_input">

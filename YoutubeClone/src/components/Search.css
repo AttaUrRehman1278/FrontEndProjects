@@ -9,7 +9,6 @@
 .search_videos {
     flex: 0.8;
     padding: 20px;
-    background-color: rgb(247, 247, 247);
 }
 
 .search_videos_top {
@@ -20,7 +19,7 @@
 
 .search_videos hr {
     height: 1px;
-    background-color: lightgray;
+    background-color: rgb(49, 48, 48);
     margin-top: 10px;
     margin-bottom: 10px;
     border: 0;

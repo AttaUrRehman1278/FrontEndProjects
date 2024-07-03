@@ -1,0 +1,58 @@
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+.channel_details {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    gap: 4px;
+}
+.search_channel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    flex: 1;
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+.search_channel_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.channel_name {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.verified {
+    font-size: small !important;
+}
+
+.subscription_btn {
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.channel_name > h4 {
+    font-size: 22px;
+    font-weight: lighter !important;
+    margin-bottom: 3px;
+}
+
+.channel_desc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+}

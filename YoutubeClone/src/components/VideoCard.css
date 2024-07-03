@@ -1,0 +1,27 @@
+.VideoCard_flex {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+}
+
+.VideoCard_text {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 0px 10px;
+}
+.VideoCard_thumbnail {
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+.VideoCard_avatar {
+    height: 30px;
+    width: 30px;
+}
+
+.VideoCard_detail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

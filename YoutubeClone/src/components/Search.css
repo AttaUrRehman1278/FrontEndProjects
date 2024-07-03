@@ -1,0 +1,27 @@
+.seacrh_page {
+    display: flex;
+}
+
+.sidebar {
+    flex: 0.2;
+}
+
+.search_videos {
+    flex: 0.8;
+    padding: 20px;
+    background-color: rgb(247, 247, 247);
+}
+
+.search_videos_top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.search_videos hr {
+    height: 1px;
+    background-color: lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+}

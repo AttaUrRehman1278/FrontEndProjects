@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    margin: 0px 50px 0px 10px;
+    margin: 10px 50px 0px 10px;
 }
 
 .sidebarRow_icon {
@@ -24,7 +24,7 @@
 }
 
 .sidebarRow:hover .sidebarRow_icon {
-    color: red;
+    color: white;
 }
 
 .sidebarRow:hover .sidebarRow_title {
@@ -37,5 +37,5 @@
 }
 
 .sidebarRow.selected .sidebarRow_icon {
-    color: red;
+    color: white;
 }

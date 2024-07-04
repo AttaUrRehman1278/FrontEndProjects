@@ -13,9 +13,11 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: "/search",
+    path: "/search/:searchTerm",
     element: 
-      <Search/>
+      <Search 
+        channel="Clever Programmer"
+      />
   }
 ])
 

@@ -56,3 +56,13 @@
     gap: 6px;
     font-size: 13px;
 }
+
+.channel_desc > p {
+    display: flex;
+    align-items: center;
+}
+
+.channel_desc .square {
+    font-size: 4px !important;
+    padding: 0px 5px;
+}

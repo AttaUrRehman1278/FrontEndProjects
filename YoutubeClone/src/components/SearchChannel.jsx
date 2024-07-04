@@ -1,6 +1,7 @@
 import React from 'react'
 import "./SearchChannel.css"
 import { CheckCircle } from '@mui/icons-material'
+import { Square } from '@mui/icons-material'
 
 const SearchChannel = ({ avatar, channel, subs, description }) => {
     return (
@@ -13,7 +14,7 @@ const SearchChannel = ({ avatar, channel, subs, description }) => {
                         <CheckCircle className='verified' />
                     </div>
                     <div className="channel_desc">
-                        <p>@{channel} . {subs}M subscribers</p>
+                        <p>@{channel} <Square className='square'/> {subs}M subscribers</p>
                         <p>{description}</p>
                     </div>
                 </div>

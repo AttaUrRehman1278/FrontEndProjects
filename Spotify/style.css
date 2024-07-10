@@ -24,10 +24,17 @@ background-color: #121212;
 .main {
     background-color: #121212;
     flex: 0.75;
+    max-height: 510px;
+    overflow: auto;
+    position: relative;
 }
 
-nav {
+.main nav {
+    padding: 0px !important;
     position: sticky;
+    top: 0px;
+    z-index: 2;
+    background-color: rgb(34, 34, 34) !important;
 }
 
 .arrow {
@@ -130,4 +137,8 @@ nav {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.content {
+   
 }

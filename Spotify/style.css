@@ -24,21 +24,31 @@ background-color: #121212;
 .main {
     background-color: #121212;
     flex: 0.75;
-    max-height: 510px;
-    overflow: auto;
-    position: relative;
+    position: inherit;
 }
 
 .main nav {
-    padding: 0px !important;
-    position: sticky;
+    padding: 4px 20px !important;
     top: 0px;
     z-index: 2;
-    background-color: rgb(34, 34, 34) !important;
+    /* background-color:#121212; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .arrow {
     margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow img {
+    background-color: #121212;
+    border-radius: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .signup-btn {
@@ -53,7 +63,7 @@ background-color: #121212;
     padding: 13px 30px;
     border-radius: 50px;
     font-weight: bold;
-    
+    margin-right: 10px;
 }
 
 .login-btn {
@@ -140,5 +150,26 @@ background-color: #121212;
 }
 
 .content {
-   
+    position: relative;
+    height: 480px;
+    overflow: auto;
+}
+
+.popular-albums > h2 {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.popular-albums > h2:hover {
+    text-decoration: underline;
+}
+
+.card {
+    border: 2px solid red;
+    width: 190px;
+    object-fit: contain;
+}
+
+.card img {
+    object-fit: contain;
 }

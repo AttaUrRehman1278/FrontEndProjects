@@ -3,12 +3,12 @@
 body {
     color: white;
     font-family: "Roboto";
+    position: relative;
 }
 
 
 .sidebar {
-    flex: 0.25;
-    position: relative;
+    width: 25%;
 }
 
 .sidebar-top {
@@ -17,23 +17,25 @@ background-color: #121212;
 
 .sidebar-bottom {
     background-color: #121212;
-    min-height: 55vh;
+    height: 349px;
     position: relative;
     }
     
 .main {
     background-color: #121212;
-    flex: 0.75;
-    position: inherit;
+    width: 75%;
+    height: 533px;
+    position: relative;
 }
 
 .main nav {
     padding: 4px 20px !important;
     top: 0px;
     z-index: 2;
-    /* background-color:#121212; */
+    background-color:#121212;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    position: sticky;
 }
 
 .arrow {
@@ -70,6 +72,7 @@ background-color: #121212;
     background: white;
     border: none;
     color: black;
+    filter: invert(1);
 }
 
 .plus-icon {
@@ -96,24 +99,24 @@ background-color: #121212;
 }
 
 .playlist {
-    height: 40px;
+    height: 50px;
     overflow: auto;
     padding: 30px 20px;
 }
 
 .sidebar-footer {
     display: flex;
-    padding: 30px 20px;
-    gap: 15px;
+    padding: 0px 20px;
+    gap: 5px;
     flex-wrap: wrap;
-    position: relative;
-    bottom: 10px;
+    position: absolute;
+    bottom: 75px;
 }
 
 .sidebar-footer a {
     color: white;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .lang-btn {
@@ -127,8 +130,8 @@ background-color: #121212;
     background: none;
     padding: 6px 9px;
     cursor: pointer;
-    position: relative;
-    bottom: 3px;
+    position: absolute;
+    bottom: 15px;
 }
 
 .lang-btn > img {
@@ -170,6 +173,7 @@ background-color: #121212;
     overflow: hidden;
     padding: 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .card img {
@@ -191,4 +195,16 @@ background-color: #121212;
 
 .card:hover {
     background-color: #1a1a1a;
+}
+
+.playbar {
+    position: relative;
+    bottom: 0;
+    width: 70vw;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 5px 0;
+    border-radius: 4px;
 }

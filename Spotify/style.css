@@ -208,3 +208,10 @@ background-color: #121212;
     padding: 5px 0;
     border-radius: 4px;
 }
+
+.playbar img {
+    width: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 0 10px;
+}

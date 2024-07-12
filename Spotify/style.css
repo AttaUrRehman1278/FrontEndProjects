@@ -197,13 +197,14 @@ background-color: #121212;
     background-color: #1a1a1a;
 }
 
-.playbar {
+.play {
     position: relative;
     bottom: 0;
     width: 70vw;
     background-color: aqua;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: auto;
     padding: 5px 0;
     border-radius: 4px;

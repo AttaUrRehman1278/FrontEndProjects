@@ -22,7 +22,7 @@ async function main() {
     let surahs = await getSurahs();
     console.log(surahs);
     var audio = new Audio(surahs[0]);
-    // audio.play();
+    audio.play(); 
 }
 
-main()
+// main()

@@ -216,3 +216,7 @@ background-color: #121212;
     cursor: pointer;
     padding: 0 10px;
 }
+
+.play-svg {
+    width: 20px !important;
+}

@@ -24,5 +24,3 @@ async function main() {
     var audio = new Audio(surahs[0]);
     audio.play(); 
 }
-
-// main()

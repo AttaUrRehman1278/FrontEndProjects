@@ -11,7 +11,7 @@ async function getSurahs() {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            surahs.push(element.href)
+            surahs.push(element.href.split("/tilawat/")[1])
         }
     }
     return surahs
@@ -20,7 +20,16 @@ async function getSurahs() {
 async function main() {
 
     let surahs = await getSurahs();
-    console.log(surahs);
-    var audio = new Audio(surahs[0]);
-    audio.play(); 
+    let surahUL = document.querySelector(".playlist").getElementsByTagName("ul")[0];
+    for (const surah of surahs) {
+        surahUL.innerHTML = surahUL.innerHTML + `<li> 
+            <div class='info'>
+                <div>${surah.replaceAll("%20", " ")} </div>
+            </div>
+        </li>`
+    }
+    // var audio = new Audio(surahs[0]);
+    // audio.play(); 
 }
+
+main()

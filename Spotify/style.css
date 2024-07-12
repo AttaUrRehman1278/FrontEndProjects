@@ -104,6 +104,10 @@ background-color: #121212;
     padding: 30px 20px;
 }
 
+.playlist ul {
+    list-style: none;
+}
+
 .sidebar-footer {
     display: flex;
     padding: 0px 20px;
@@ -218,5 +222,6 @@ background-color: #121212;
 }
 
 .play-svg {
-    width: 20px !important;
+    width: 18px !important;
+    font-weight: bolder !important;
 }

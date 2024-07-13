@@ -99,24 +99,30 @@ background-color: #121212;
 }
 
 .playlist {
-    height: 50px;
+    height: 150px;
     overflow: auto;
-    padding: 30px 20px;
 }
 
 .playlist ul {
     list-style: none;
+    padding-left: 0px !important;
 }
 
 .playlist ul li {
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
+    width: 18vw;
+    margin: 10px 15px;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .playlist ul li img {
     width: 35px;
     border-radius: 5px;
+}
+
+.playlist ul li * {
+    font-size: 10px;
 }
 
 .sidebar-footer {

@@ -108,6 +108,17 @@ background-color: #121212;
     list-style: none;
 }
 
+.playlist ul li {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.playlist ul li img {
+    width: 35px;
+    border-radius: 5px;
+}
+
 .sidebar-footer {
     display: flex;
     padding: 0px 20px;

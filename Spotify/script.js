@@ -22,7 +22,7 @@ async function main() {
     let surahs = await getSurahs();
     let surahUL = document.querySelector(".playlist").getElementsByTagName("ul")[0];
     for (const surah of surahs) {
-        surahUL.innerHTML = surahUL.innerHTML + `<li> 
+        surahUL.innerHTML = surahUL.innerHTML + `<li> <img src="public/rockstar-umair.jfif" alt="">
             <div class='info'>
                 <div>${surah.replaceAll("%20", " ")} </div>
             </div>

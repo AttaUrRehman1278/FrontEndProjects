@@ -26,6 +26,9 @@ async function main() {
             <div class='info'>
                 <div>${surah.replaceAll("%20", " ")} </div>
             </div>
+            <div class = 'play-song'>
+                <img src="public/play.svg" alt="">
+            </div>
         </li>`
     }
     // var audio = new Audio(surahs[0]);

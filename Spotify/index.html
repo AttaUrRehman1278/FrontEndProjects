@@ -33,9 +33,6 @@
                 </div>
                 <div class="playlist flex flex-column g-10">
                     <ul>
-                        <li> 
-                            
-                        </li>
                     </ul>
                 </div>
                 <div class="sidebar-footer">
@@ -109,13 +106,17 @@
                     </div>
                 </div>
             </div>
-            <div class="play">
+            <div class="play flex flex-column">
                 <div class="playbar flex items-align-center">
-                    <img src="public/previous.svg" alt="">
-                    <img class="play-svg" onclick={main()} src="public/play.svg" alt="">
-                    <img src="public/next.svg" alt="">
+                    <img id="previous" src="public/previous.svg" alt="">
+                    <img id="play" src="public/play.svg" alt="">
+                    <img id="next" src="public/next.svg" alt="">
                 </div>
-                <div class="seekbar"></div>            
+                <div class="seekbar">
+                    <div class="circle">
+
+                    </div>
+                </div>            
             </div>
         </div>
         <script src="script.js"></script>

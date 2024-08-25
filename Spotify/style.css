@@ -106,6 +106,7 @@ background-color: #121212;
 .playlist ul {
     list-style: none;
     padding-left: 0px !important;
+    cursor: pointer;
 }
 
 .playlist ul li {
@@ -225,7 +226,7 @@ background-color: #121212;
 
 .play {
     position: relative;
-    bottom: 0;
+    bottom: 4px;
     width: 70vw;
     background-color: aqua;
     display: flex;
@@ -234,6 +235,7 @@ background-color: #121212;
     margin: auto;
     padding: 5px 0;
     border-radius: 4px;
+    gap: 5px;
 }
 
 .playbar img {
@@ -243,7 +245,20 @@ background-color: #121212;
     padding: 0 10px;
 }
 
-.play-svg {
-    width: 18px !important;
-    font-weight: bolder !important;
+.seekbar {
+    position: relative;
+    width: 90%;
+    height: 3px;
+    background-color: black;
+}
+
+.circle {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    background-color: blue;
+    bottom: -4px;
+    left: 0%;
+    transition: left 0.5s;
 }

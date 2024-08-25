@@ -1,5 +1,6 @@
 console.log("This is javascript file");
 
+let currentSurah = new Audio()
 
 async function getSurahs() {
     let a = await fetch("http://127.0.0.1:3000/tilawat/");
@@ -17,6 +18,11 @@ async function getSurahs() {
     return surahs
 }
 
+const playAudio = (track) => {
+    currentSurah.src = "/tilawat/" + track
+    currentSurah.play()
+    play.src = "public/pause.svg"
+}
 async function main() {
 
     let surahs = await getSurahs();
@@ -24,15 +30,30 @@ async function main() {
     for (const surah of surahs) {
         surahUL.innerHTML = surahUL.innerHTML + `<li> <img src="public/rockstar-umair.jfif" alt="">
             <div class='info'>
-                <div>${surah.replaceAll("%20", " ")} </div>
+                <div class= 'song-name'>${surah.replaceAll("%20", " ")} </div>
             </div>
             <div class = 'play-song'>
                 <img src="public/play.svg" alt="">
             </div>
         </li>`
     }
-    // var audio = new Audio(surahs[0]);
-    // audio.play(); 
+    
+    Array.from(document.querySelector(".playlist").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            playAudio(e.querySelector(".song-name").innerHTML)
+        })
+    })
+
+    play.addEventListener("click", ()=> {
+        if (currentSurah.paused) {
+            currentSurah.play()
+            play.src = "public/pause.svg"
+        }
+        else {
+            currentSurah.pause()
+            play.src = "public/play.svg"
+        }
+    })
 }
 
 main()

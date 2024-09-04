@@ -238,11 +238,16 @@ background-color: #121212;
     gap: 5px;
 }
 
-.playbar img {
+.playbar .logos img {
     width: 24px;
     color: white;
     cursor: pointer;
     padding: 0 10px;
+}
+
+.playbar {
+    width: 90%;
+    justify-content: space-between;
 }
 
 .seekbar {

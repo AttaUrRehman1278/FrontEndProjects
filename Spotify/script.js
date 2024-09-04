@@ -2,6 +2,12 @@ console.log("This is javascript file");
 
 let currentSurah = new Audio()
 
+function SecondsToMinSec(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return minutes.toString().padStart(2, '0') + ':' +
+        secs.toString().padStart(2, '0');
+}
 async function getSurahs() {
     let a = await fetch("http://127.0.0.1:3000/tilawat/");
     let response = await a.text();
@@ -22,6 +28,7 @@ const playAudio = (track) => {
     currentSurah.src = "/tilawat/" + track
     currentSurah.play()
     play.src = "public/pause.svg"
+    document.querySelector(".surahinfo").innerHTML = track.split(".")[0]
 }
 async function main() {
 
@@ -48,8 +55,7 @@ async function main() {
     for (const surah of surahs){
         surahCard.innerHTML = surahCard.innerHTML + `<div class="card">
             <img src="public/rockstar-umair.jfif" alt="">
-                            <h3 class="surah-name">${surah.replaceAll("%20", " ")}</h3>
-                            
+            <h3 class="surah-name">${surah.replaceAll("%20", " ")}</h3>
         </div>`
     }
     Array.from(document.querySelector(".album-cards").getElementsByClassName("card")).forEach(e => {
@@ -57,6 +63,7 @@ async function main() {
             playAudio(e.querySelector(".surah-name").innerHTML)
         })
     })
+
     play.addEventListener("click", ()=> {
         if (currentSurah.paused) {
             currentSurah.play()
@@ -66,6 +73,11 @@ async function main() {
             currentSurah.pause()
             play.src = "public/play.svg"
         }
+    })
+
+    currentSurah.addEventListener("timeupdate", ()=>{
+        console.log(currentSurah.currentTime, currentSurah.duration)
+        document.querySelector(".surahtime").innerHTML = `${SecondsToMinSec(currentSurah.currentTime)}/${SecondsToMinSec(currentSurah.duration)}`
     })
 }
 

@@ -253,8 +253,9 @@ background-color: #121212;
 .seekbar {
     position: relative;
     width: 90%;
-    height: 3px;
+    height: 5px;
     background-color: black;
+    cursor: pointer;
 }
 
 .circle {
@@ -263,7 +264,7 @@ background-color: #121212;
     width: 12px;
     border-radius: 100%;
     background-color: blue;
-    bottom: -4px;
+    bottom: -3px;
     left: 0%;
     transition: left 0.5s;
 }

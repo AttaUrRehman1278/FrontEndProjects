@@ -24,15 +24,18 @@ async function getSurahs() {
     return surahs
 }
 
-const playAudio = (track) => {
+const playAudio = (track, pause=false) => {
     currentSurah.src = "/tilawat/" + track
-    currentSurah.play()
+    if (!pause){
+        currentSurah.play()
+    }
     play.src = "public/pause.svg"
-    document.querySelector(".surahinfo").innerHTML = track.split(".")[0]
+    document.querySelector(".surahinfo").innerHTML = decodeURI(track.split(".")[0])
 }
 async function main() {
 
     let surahs = await getSurahs();
+    playAudio(surahs[0], true)
     let surahUL = document.querySelector(".playlist").getElementsByTagName("ul")[0];
     for (const surah of surahs) {
         surahUL.innerHTML = surahUL.innerHTML + `<li> <img src="public/rockstar-umair.jfif" alt="">
@@ -78,6 +81,13 @@ async function main() {
     currentSurah.addEventListener("timeupdate", ()=>{
         console.log(currentSurah.currentTime, currentSurah.duration)
         document.querySelector(".surahtime").innerHTML = `${SecondsToMinSec(currentSurah.currentTime)}/${SecondsToMinSec(currentSurah.duration)}`
+        document.querySelector(".circle").style.left = currentSurah.currentTime / currentSurah.duration * 100 + "%"
+    })
+    
+    document.querySelector(".seekbar").addEventListener("click", (e)=>{
+        let percent = e.offsetX / document.querySelector(".seekbar").offsetWidth * 100;
+        document.querySelector(".circle").style.left = percent + "%"
+        currentSurah.currentTime = percent / 100 * currentSurah.duration
     })
 }
 

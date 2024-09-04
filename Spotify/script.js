@@ -44,6 +44,14 @@ async function main() {
         })
     })
 
+    let surahCard = document.querySelector(".album-cards");
+    for (const surah of surahs){
+        surahCard.innerHTML = surahCard.innerHTML + `<div class="card">
+            <img src="public/rockstar-umair.jfif" alt="">
+                            <h3>${surah.replaceAll("%20", " ")}</h3>
+                            
+        </div>`
+    }
     play.addEventListener("click", ()=> {
         if (currentSurah.paused) {
             currentSurah.play()

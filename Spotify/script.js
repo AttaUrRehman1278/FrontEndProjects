@@ -1,5 +1,3 @@
-console.log("This is javascript file");
-
 let currentSurah = new Audio();
 
 function secondsToMinSec(seconds) {

@@ -196,7 +196,7 @@ background-color: #121212;
 
 .card {
     /* border: 2px solid red; */
-    width: 140px;
+    width: 130px;
     overflow: hidden;
     padding: 10px;
     border-radius: 5px;
@@ -217,6 +217,7 @@ background-color: #121212;
 
 .album-cards {
     display: flex;
+    flex-wrap: wrap;
     margin-left: 20px;
 }
 

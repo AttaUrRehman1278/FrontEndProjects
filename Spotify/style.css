@@ -36,6 +36,9 @@ background-color: #121212;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     position: sticky;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .arrow {
@@ -54,7 +57,7 @@ background-color: #121212;
     cursor: pointer;
 }
 
-.hamburger {
+.arrow .hamburger {
     display: none;
 }
 
@@ -67,11 +70,11 @@ background-color: #121212;
 
 .nav-btn button {
     cursor: pointer;
-    font-size: 17px;
-    padding: 13px 30px;
+    font-size: 14px;
+    padding: 13px 20px;
     border-radius: 50px;
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .login-btn {
@@ -249,7 +252,6 @@ background-color: #121212;
     margin: auto;
     padding: 5px 0;
     border-radius: 4px;
-    /* gap: 5px; */
 }
 
 .playbar .logos img {
@@ -307,7 +309,7 @@ background-color: #121212;
     .play {
         font-size: 15px;
     }
-    .hamburger {
+    .arrow .hamburger {
         display: block;
     }
 }

@@ -22,6 +22,7 @@ const playAudio = (track, pause = false) => {
     }
     play.src = "public/pause.svg";
     document.querySelector(".surahinfo").textContent = decodeURI(track.split(".")[0]);
+    document.querySelector(".surahtime").textContent = "00:00/00:00";
 }
 
 async function main() {

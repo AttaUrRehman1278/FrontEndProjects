@@ -92,6 +92,11 @@ async function main() {
         circle.style.left = `${percent * 100}%`;
         currentSurah.currentTime = percent * currentSurah.duration;
     });
+
+    // Add Event Listener for hamburger
+    document.querySelector(".hamburger").addEventListener("click", (e => {
+        document.querySelector(".sidebar").style.left = "0%";
+    }))
 }
 
 main();

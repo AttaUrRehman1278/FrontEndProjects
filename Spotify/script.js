@@ -72,6 +72,7 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentSurah.paused) {
             currentSurah.play();
+            // currentSurah.load();
             play.src = "public/pause.svg";
         } else {
             currentSurah.pause();

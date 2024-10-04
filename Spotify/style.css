@@ -340,11 +340,16 @@ body {
     .arrow .hamburger {
         display: block;
     }
+
 }
 
 @media (max-width:500px) {
     .playbar {
         flex-direction: column;
         gap: 3px;
+    }
+    .card {
+        width: 90vw;
+        min-height: 100%;
     }
 }

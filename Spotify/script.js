@@ -1,6 +1,10 @@
 let currentSurah = new Audio();
+let surahs;
 
 function secondsToMinSec(seconds) {
+    if (isNaN(seconds) || seconds < 0){
+        return "00:00"
+    }
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -26,7 +30,7 @@ const playAudio = (track, pause = false) => {
 }
 
 async function main() {
-    const surahs = await getSurahs();
+    surahs = await getSurahs();
     playAudio(surahs[0], true);
 
     const surahUL = document.querySelector(".playlist ul");
@@ -103,6 +107,26 @@ async function main() {
     document.querySelector(".close").addEventListener("click", (e => {
         document.querySelector(".sidebar").style.left = "-120%";
     }))
+
+
+    // Add Event Listener for previous and next surah
+    previous.addEventListener("click", () => {
+        currentSurah.pause()
+
+        let index = surahs.indexOf(currentSurah.src.split("/").slice(-1)[0])
+        if((index -1 ) >= 0){
+            playAudio(surahs[index - 1])
+        }
+    })
+
+    next.addEventListener("click", () => {
+        currentSurah.pause()
+
+        let index = surahs.indexOf(currentSurah.src.split("/").slice(-1)[0])
+        if((index + 1) < surahs.length){
+            playAudio(surahs[index + 1])
+        }
+    })
 }
 
 main();

@@ -12,6 +12,10 @@ body {
     background-color: black;
 }
 
+.close {
+    display: none;
+}
+
 .sidebar-top {
     background-color: #121212;
 }
@@ -310,6 +314,14 @@ body {
         transition: all 300ms;
         z-index: 100;
         width: 300px;
+    }
+
+    .close {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        cursor: pointer;
     }
 
     .main {

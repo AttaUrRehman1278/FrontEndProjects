@@ -97,6 +97,11 @@ async function main() {
     document.querySelector(".hamburger").addEventListener("click", (e => {
         document.querySelector(".sidebar").style.left = "0%";
     }))
+
+    // Add Event Listener for hamburger
+    document.querySelector(".close").addEventListener("click", (e => {
+        document.querySelector(".sidebar").style.left = "-120%";
+    }))
 }
 
 main();

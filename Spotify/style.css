@@ -307,6 +307,10 @@ body {
     filter: invert(1);
 }
 
+.volume, .volume input {
+    cursor: pointer;
+}
+
 @media (max-width:1115px) {
     .sidebar {
         position: absolute;
@@ -346,6 +350,8 @@ body {
 @media (max-width:500px) {
     .playbar {
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: 3px;
     }
     .card {

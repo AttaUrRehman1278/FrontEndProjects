@@ -130,7 +130,6 @@ async function main() {
 
     // Add Event Listener for Volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e => {
-        console.log(e, e.target, e.target.value)
         currentSurah.volume = parseInt(e.target.value)/100
     }))
 }

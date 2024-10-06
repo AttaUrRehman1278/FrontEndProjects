@@ -1,5 +1,6 @@
 let currentSurah = new Audio();
 let surahs;
+let currFolder;
 
 function secondsToMinSec(seconds) {
     if (isNaN(seconds) || seconds < 0){
@@ -10,17 +11,28 @@ function secondsToMinSec(seconds) {
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
-async function getSurahs() {
-    const response = await fetch("http://127.0.0.1:3000/tilawat/");
+async function getSurahs(folder) {
+    currFolder = folder;
+    const response = await fetch(`http://127.0.0.1:3000/${folder}/`);
     const text = await response.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'text/html');
-    const links = doc.querySelectorAll('a[href$=".mp3"]');
-    return Array.from(links).map(link => link.href.split("/tilawat/")[1]);
+    let div = document.createElement("div")
+    div.innerHTML = text
+    let as = div.getElementsByTagName("a")
+    let songs = []
+    for (let index = 0; index < as.length; index++) {
+        const element = as[index];
+        if (element.href.includes(".mp3")){
+            // console.log(element)
+            songs.push(element.href.split(`/${currFolder}/`)[0].split("/")[5])
+        }
+    }
+    return songs
+
 }
 
 const playAudio = (track, pause = false) => {
-    currentSurah.src = "/tilawat/" + track;
+    
+    currentSurah.src = `/${currFolder}/`+ track;
     if (!pause) {
         currentSurah.play();
     }
@@ -30,7 +42,7 @@ const playAudio = (track, pause = false) => {
 }
 
 async function main() {
-    surahs = await getSurahs();
+    surahs = await getSurahs(`tilawat/Ismail Annuri`);
     playAudio(surahs[0], true);
 
     const surahUL = document.querySelector(".playlist ul");
@@ -51,27 +63,26 @@ async function main() {
         return li;
     };
 
-    const createSurahCard = (surah) => {
-        const div = document.createElement('div');
-        div.className = 'card';
-        div.innerHTML = `
-            <img src="public/rockstar-umair.jfif" alt="">
-            <h3 class="surah-name">${surah.replaceAll("%20", " ")}</h3>
-        `;
-        div.addEventListener("click", () => playAudio(surah));
-        return div;
-    };
+    // const createSurahCard = (surah) => {
+    //     const div = document.createElement('div');
+    //     div.className = 'card';
+    //     div.innerHTML = `
+    //         <div>${folder/info.json}</div>
+    //     `;
+    //     div.addEventListener("click", () => playAudio(surah));
+    //     return div;
+    // };
 
     const fragment1 = document.createDocumentFragment();
     const fragment2 = document.createDocumentFragment();
 
     surahs.forEach(surah => {
         fragment1.appendChild(createSurahList(surah));
-        fragment2.appendChild(createSurahCard(surah));
+        // fragment2.appendChild(createSurahCard(surah));
     });
 
     surahUL.appendChild(fragment1);
-    surahCard.appendChild(fragment2);
+    // surahCard.appendChild(fragment2);
 
     play.addEventListener("click", () => {
         if (currentSurah.paused) {
@@ -132,6 +143,12 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e => {
         currentSurah.volume = parseInt(e.target.value)/100
     }))
+
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async item => {
+            surahs = await getSurahs(`tilawat/${item.currentTarget.dataset.folder}`)
+        })
+    })
 }
 
 main();

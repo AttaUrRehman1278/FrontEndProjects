@@ -147,7 +147,6 @@ async function main() {
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
             surahs = await getSurahs(`tilawat/${item.currentTarget.dataset.folder}`)
-            console.log(e)
         })
     })
 }

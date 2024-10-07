@@ -50,7 +50,7 @@ async function getSurahs(folder) {
             playAudio(surah.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     });
-
+    return surahs
 
 }
 
@@ -93,6 +93,7 @@ async function displayAlbums() {
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
             surahs = await getSurahs(`tilawat/${item.currentTarget.dataset.folder}`)
+            playAudio(surahs[0])
         })
     })
     Array.from(document.getElementsByClassName("card")).forEach(e => {

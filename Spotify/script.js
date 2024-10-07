@@ -13,20 +13,44 @@ function secondsToMinSec(seconds) {
 
 async function getSurahs(folder) {
     currFolder = folder;
-    const response = await fetch(`http://127.0.0.1:3000/${folder}/`);
-    const text = await response.text();
+    let a = await fetch(`http://127.0.0.1:3000/${folder}/`);
+    let response = await a.text();
     let div = document.createElement("div")
-    div.innerHTML = text
+    div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    let songs = []
+    surahs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
-        if (element.href.includes(".mp3")){
-            // console.log(element)
-            songs.push(element.href.split(`/${currFolder}/`)[0].split("/")[5])
+        if (element.href.endsWith(".mp3")){
+            surahs.push(element.href.split(`/`)[5])
         }
     }
-    return songs
+    
+    let surahUL = document.querySelector(".playlist").getElementsByTagName("ul")[0]
+    surahUL.innerHTML = " "
+
+    for (const surah of surahs){
+
+        
+        surahUL.innerHTML = surahUL.innerHTML +  ` <li>
+        <img src="public/rockstar-umair.jfif" alt="">
+        <div class='info'>
+        <div class='song-name'>${surah.replaceAll("%20", " ")}</div>
+        </div>
+        <div class='play-song'>
+        <img src="public/play.svg" alt="">
+        </div>
+        </li>`;
+        
+    }
+    
+
+    Array.from(document.querySelector(".playlist").getElementsByTagName("li")).forEach(surah => {
+        surah.addEventListener("click", element => {
+            playAudio(surah.querySelector(".info").firstElementChild.innerHTML.trim())
+        })
+    });
+
 
 }
 
@@ -47,45 +71,43 @@ async function displayAlbums() {
     let div = document.createElement("div")
     div.innerHTML = text
     let anchors = div.getElementsByTagName("a")
+    let albumCards = document.querySelector(".albumCards")
     let array = Array.from(anchors)
     for (let index = 0; index < array.length; index++) {
         const element = array[index];
-        console.log(array.href)
+        if (element.href.includes("/tilawat")){
+            let folder = element.href.split("/").slice(-2)[0]
+
+            let response = await fetch(`http://127.0.0.1:3000/tilawat/${folder}/info.json`);
+            let text = await response.json();
+            albumCards.innerHTML = albumCards.innerHTML + `<div data-folder="${folder}" class="card">
+            <div class="play-btn">
+                                <img src="public/play.svg" alt="">
+                                </div>
+                            <img src="tilawat/${folder}/rockstar-umair.jfif" alt="">
+                            <h2>${text.title}</h2>
+                            <p>${text.description}</p>
+                        </div>` 
+        }
     }
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async item => {
+            surahs = await getSurahs(`tilawat/${item.currentTarget.dataset.folder}`)
+        })
+    })
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", item => {
+            document.querySelector(".sidebar").style.left = "0%";
+        })
+    })
 }
 
 async function main() {
-    surahs = await getSurahs(`tilawat/Ismail Annuri`);
+    await getSurahs(`tilawat/Ahmed Khedr`);
     playAudio(surahs[0], true);
 
     displayAlbums();
-
-    const surahUL = document.querySelector(".playlist ul");
-    const surahCard = document.querySelector(".album-cards");
-
-    const createSurahList = (surah) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <img src="public/rockstar-umair.jfif" alt="">
-            <div class='info'>
-                <div class='song-name'>${surah.replaceAll("%20", " ")}</div>
-            </div>
-            <div class='play-song'>
-                <img src="public/play.svg" alt="">
-            </div>
-        `;
-        li.addEventListener("click", () => playAudio(surah));
-        return li;
-    };
-
-    const fragment1 = document.createDocumentFragment();
-
-    surahs.forEach(surah => {
-        fragment1.appendChild(createSurahList(surah));
-    });
-
-    surahUL.appendChild(fragment1);
-
+    
     play.addEventListener("click", () => {
         if (currentSurah.paused) {
             currentSurah.play();
@@ -145,11 +167,21 @@ async function main() {
         currentSurah.volume = parseInt(e.target.value)/100
     }))
 
-    Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async item => {
-            surahs = await getSurahs(`tilawat/${item.currentTarget.dataset.folder}`)
-        })
+    document.querySelector(".volume > img").addEventListener("click", e => {
+        console.log(e.target)
+        if(e.target.src.includes("public/volume.svg")){
+            e.target.src = e.target.src.replace("public/volume.svg","public/mute.svg")
+            currentSurah.volume = 0;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+        }
+        else {
+            e.target.src = e.target.src.replace("public/mute.svg", "public/volume.svg")
+            currentSurah.volume = 0.50;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 50;
+        }
     })
+
+   
 }
 
 main();

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --a: 0;
+}
 body {
     color: white;
     font-family: "Roboto";
@@ -131,11 +134,15 @@ body {
 
 .playlist ul li {
     display: flex;
-    width: 20vw;
+    width: 19vw;
     margin: 10px 15px;
     justify-content: space-between;
     gap: 10px;
     align-items: center;
+    padding: 8px;
+    border: 1px solid rgb(92, 91, 91);
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .playlist ul li img {
@@ -207,8 +214,8 @@ body {
     overflow: auto;
 }
 
-.album-cards {
-    max-height: 200px;
+.albumCards {
+    max-height: 220px;
     overflow: auto;
 }
 
@@ -223,6 +230,7 @@ body {
 
 .card {
     /* border: 2px solid red; */
+    position: relative;
     width: 130px;
     overflow: hidden;
     padding: 10px;
@@ -243,7 +251,7 @@ body {
     margin: 4px 0px;
 }
 
-.album-cards {
+.albumCards {
     display: flex;
     flex-wrap: wrap;
     margin-left: 20px;
@@ -252,22 +260,23 @@ body {
 
 .card:hover {
     background-color: #1a1a1a;
+    --a: 1;
 }
 
-.card .play-btn img {
-    width: 24px;
-    height: 24px;                                                                                                          
+.play-btn {
+    width: 18px;
+    height: 18px;                                                                                                          
     background: #1fdf64;
     border-radius: 50%;
-    padding: 6px;
+    padding: 9px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 200px;
-    right: 90px;
-    opacity: 1;
-    transform: all 1s ease-out;
+    top: 90px;
+    right: 27px;
+    opacity: var(--a);
+    transform: all 2s ease-out;
 }                                                                                                                                                                            
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
@@ -330,6 +339,10 @@ body {
     cursor: pointer;
 }
 
+.volume range {
+    transition: all 2s ease-out;
+}
+
 @media (max-width:900px) {
     .sidebar {
         position: absolute;
@@ -374,15 +387,18 @@ body {
         gap: 3px;
     }
     .card {
-        width: 50vw;
+        width: 90vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .album-cards {
+    .albumCards {
         max-height: 80vh;
         margin: 0;
+        margin-left: 30px;
+        /* flex-direction: column; */
         justify-content: center;
+        align-items: center;
     }
 }

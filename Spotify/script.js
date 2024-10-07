@@ -41,9 +41,24 @@ const playAudio = (track, pause = false) => {
     document.querySelector(".surahtime").textContent = "00:00/00:00";
 }
 
+async function displayAlbums() {
+    const response = await fetch(`http://127.0.0.1:3000/tilawat/`);
+    const text = await response.text();
+    let div = document.createElement("div")
+    div.innerHTML = text
+    let anchors = div.getElementsByTagName("a")
+    let array = Array.from(anchors)
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        console.log(array.href)
+    }
+}
+
 async function main() {
     surahs = await getSurahs(`tilawat/Ismail Annuri`);
     playAudio(surahs[0], true);
+
+    displayAlbums();
 
     const surahUL = document.querySelector(".playlist ul");
     const surahCard = document.querySelector(".album-cards");
@@ -63,31 +78,17 @@ async function main() {
         return li;
     };
 
-    // const createSurahCard = (surah) => {
-    //     const div = document.createElement('div');
-    //     div.className = 'card';
-    //     div.innerHTML = `
-    //         <div>${folder/info.json}</div>
-    //     `;
-    //     div.addEventListener("click", () => playAudio(surah));
-    //     return div;
-    // };
-
     const fragment1 = document.createDocumentFragment();
-    const fragment2 = document.createDocumentFragment();
 
     surahs.forEach(surah => {
         fragment1.appendChild(createSurahList(surah));
-        // fragment2.appendChild(createSurahCard(surah));
     });
 
     surahUL.appendChild(fragment1);
-    // surahCard.appendChild(fragment2);
 
     play.addEventListener("click", () => {
         if (currentSurah.paused) {
             currentSurah.play();
-            // currentSurah.load();
             play.src = "public/pause.svg";
         } else {
             currentSurah.pause();

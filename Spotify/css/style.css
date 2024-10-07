@@ -188,11 +188,11 @@ body {
     cursor: pointer;
     position: absolute;
     bottom: 15px;
+    filter: invert(1);
 }
 
 .lang-btn>img {
     width: 20px;
-    filter: invert(1);
 }
 
 .playlist div button {
